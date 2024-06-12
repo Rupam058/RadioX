@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:radiox/Widgets/drawer.dart';
+import 'package:radiox/Widgets/grid.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class HomePage extends StatelessWidget {
@@ -40,7 +41,8 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      drawer: MainDrawer(),
+      drawer: const MainDrawer(),
+      body: MainGrid(),
     );
   }
 }
