@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:radiox/Widgets/drawer.dart';
-import 'package:radiox/Widgets/grid.dart';
-import 'package:velocity_x/velocity_x.dart';
+// import 'package:radiox/Widgets/grid.dart';
+import 'package:radiox/Widgets/upload.dart';
+// import 'package:velocity_x/velocity_x.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,13 +11,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Vx.gray200,
+        backgroundColor: Theme.of(context).colorScheme.onBackground,
         elevation: 0,
         centerTitle: true,
-        title: const Text(
-          'RadioX',
+        title: Text(
+          'Pluto',
           style: TextStyle(
-            color: Colors.black87,
+            color: Theme.of(context).colorScheme.primary,
             fontSize: 27,
             fontFamily: 'Enfonix',
             fontWeight: FontWeight.bold,
@@ -32,9 +33,9 @@ class HomePage extends StatelessWidget {
         // ),
         actions: [
           IconButton(
-            icon: const Icon(
+            icon: Icon(
               Icons.search,
-              color: Colors.black87,
+              color: Theme.of(context).colorScheme.primary,
               size: 27,
             ),
             onPressed: () {},
@@ -42,7 +43,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       drawer: const MainDrawer(),
-      body: MainGrid(),
+      body: const MainScreen(),
     );
   }
 }

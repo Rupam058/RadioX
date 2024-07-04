@@ -11,10 +11,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'RadioX',
+    return MaterialApp(
+      title: 'radioX',
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      theme: ThemeData(
+          colorScheme: ColorScheme.dark(
+        background: lightgrey,
+        onBackground: darkgrey,
+        primary: Colors.grey.shade300,
+        onPrimary: Colors.grey.shade500,
+      )),
+      home: const HomePage(),
     );
   }
 }
+
+Color lightgrey = const Color(0xff212121);
+Color darkgrey = const Color(0xff171717);

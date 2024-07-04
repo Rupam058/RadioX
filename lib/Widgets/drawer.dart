@@ -14,7 +14,7 @@ class MainDrawer extends StatelessWidget {
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(20),
-            color: Vx.gray200,
+            color: Theme.of(context).colorScheme.onBackground,
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,22 +48,29 @@ class MainDrawer extends StatelessWidget {
           ),
           Column(
             children: [
-              drawerLinks('assets/icons/stethoscope-solid.svg', 'Generate'),
-              drawerLinks('assets/icons/globe-outline.svg', 'Explore'),
-              drawerLinks('assets/icons/file-text-outline.svg', 'Collection'),
+              drawerLinks('assets/icons/stethoscope-solid.svg', 'Generate', context),
+              const SizedBox(height: 4),
+              drawerLinks('assets/icons/globe-outline.svg', 'Explore', context),
+              const SizedBox(height: 4),
+              drawerLinks('assets/icons/file-text-outline.svg', 'Collection', context),
             ],
-          ).p(20),
-          const Expanded(
+          ).p20(),
+          Expanded(
             child: Align(
               alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: EdgeInsets.all(25.0),
-                child: Text(
-                  'Sign Out',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 25,
-                    fontWeight: FontWeight.w500,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(10),
+                onTap: () {},
+                child: Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: Text(
+                    'Sign Out',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      color: Theme.of(context).colorScheme.primary,
+                      fontSize: 25,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ),
@@ -75,28 +82,38 @@ class MainDrawer extends StatelessWidget {
   }
 }
 
-Widget drawerLinks(String drawerIcon, String drawerText) {
-  return Container(
-    margin: const EdgeInsets.all(8.0),
-    child: Row(
-      children: [
-        SvgPicture.asset(
-          drawerIcon,
-          width: 25,
-          height: 25,
-        ),
-        const SizedBox(
-          width: 24,
-        ),
-        Text(
-          drawerText,
-          style: const TextStyle(
-            fontSize: 25,
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w600,
+Widget drawerLinks(String drawerIcon, String drawerText, BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: InkWell(
+      onTap: () {},
+      borderRadius: BorderRadius.circular(10),
+      child: Row(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(left: 8),
+            child: SvgPicture.asset(
+              drawerIcon,
+              width: 25,
+              height: 25,
+              // ignore: deprecated_member_use
+              color: Theme.of(context).colorScheme.primary,
+            ),
           ),
-        )
-      ],
+          const SizedBox(
+            width: 16,
+          ),
+          Text(
+            drawerText,
+            style: TextStyle(
+              fontSize: 25,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w600,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+          )
+        ],
+      ),
     ),
   );
 }
